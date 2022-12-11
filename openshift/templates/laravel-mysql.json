@@ -2,7 +2,7 @@
     "kind": "Template",
     "apiVersion": "v1",
     "metadata": {
-        "name": "laravel-mysql-persistent",
+        "name": "laravel-mysql",
         "annotations": {
             "openshift.io/display-name": "Laravel + MySQL (Persistent)",
             "description": "An example Laravel application with a MySQL database. For more information about using this template, including OpenShift considerations, see https://github.com/luciddreamz/laravel-ex/blob/master/readme.md.",
@@ -12,7 +12,7 @@
     },
     "message": "The following service(s) have been created in your project: ${NAME}, ${DATABASE_SERVICE_NAME}.\n\nFor more information about using this template, including OpenShift considerations, see https://github.com/luciddreamz/laravel-ex/blob/master/readme.md.",
     "labels": {
-        "template": "laravel-mysql-persistent"
+        "template": "laravel-mysql"
     },
     "objects": [{
         "kind": "Secret",
@@ -150,7 +150,7 @@
                             "command": [
                                 "./migrate-database.sh"
                             ],
-                            "containerName": "laravel-mysql-persistent"
+                            "containerName": "laravel-mysql"
                         }
                     }
                 }
@@ -160,7 +160,7 @@
                 "imageChangeParams": {
                     "automatic": true,
                     "containerNames": [
-                        "laravel-mysql-persistent"
+                        "laravel-mysql"
                     ],
                     "from": {
                         "kind": "ImageStreamTag",
@@ -183,7 +183,7 @@
                 },
                 "spec": {
                     "containers": [{
-                        "name": "laravel-mysql-persistent",
+                        "name": "laravel-mysql",
                         "image": "${NAME}",
                         "ports": [{
                             "containerPort": 8080
@@ -372,7 +372,7 @@
         "displayName": "Name",
         "description": "The name assigned to all of the frontend objects defined in this template.",
         "required": true,
-        "value": "laravel-mysql-persistent"
+        "value": "laravel-mysql"
     }, {
         "name": "NAMESPACE",
         "displayName": "Namespace",
@@ -383,7 +383,7 @@
         "name": "SOURCE_REPOSITORY_URL",
         "displayName": "Git Repository URL",
         "description": "The URL of the repository with your application source code.",
-        "value": "https://github.com/luciddreamz/laravel-ex.git",
+        "value": "https://github.com/xtrasmal/openshift-laravel.git",
         "required": true
     }, {
         "name": "SOURCE_REPOSITORY_REF",
